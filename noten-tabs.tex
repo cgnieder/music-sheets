@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{tikz}
+\setlength\parindent{0pt}
+
+\usepackage{url}
+
+\makeatletter
+\newcommand*\ps@music{%
+  \let\@mkboth\@gobbletwo
+  \let\@oddhead\@empty
+  \def\@oddfoot{%
+    \reset@font\sffamily\urlstyle{sf}%
+    \hfil \url{http://www.niederberger-musik.de/} \textcopyright~2017\hfil
+  }%
+  \let\@evenhead\@empty
+  \let\@evenfoot\@oddfoot
+}
+\makeatother
+\pagestyle{music}
+
+\newif\iftab
+\newlength\rowlength
+
+\newcommand*\notenzeile{%
+  \par\noindent
+  \begin{tikzpicture}
+    \foreach\y in {0,2,4,6,8}
+      { \draw (0pt,\y mm) -- ++ (\rowlength,0pt) ; }
+    \iftab
+      \foreach\y in {-10,-12,-14,-16,-18,-20}
+        { \draw (0pt,\y mm) -- ++ (\rowlength,0pt) ; }
+      \foreach\y/\A in {-11.9/T,-15.1/A,-18.3/B}
+      \node at (2mm,\y mm) {\sffamily \large \A} ;
+      \foreach\x in {0pt,\rowlength}
+        { \draw (\x,-20mm) -- (\x,8mm) ; }
+    \else
+      \foreach\x in {0pt,\rowlength}
+        { \draw (\x,0mm) -- (\x,8mm) ; }
+    \fi
+  \end{tikzpicture}\par
+}
+
+\begin{document}
+
+\tabtrue
+\setlength\rowlength{\dimexpr\linewidth-1.7pt\relax}
+
+\foreach\num in {1,...,6}{%
+  \ifnum\num=1 \else\vspace{1cm}\fi
+  \notenzeile
+}
+
+\end{document}
