@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{tikz}
+\setlength\parindent{0pt}
+
+\usepackage{url}
+
+\makeatletter
+\newcommand*\ps@music{%
+  \let\@mkboth\@gobbletwo
+  \let\@oddhead\@empty
+  \def\@oddfoot{%
+    \reset@font\sffamily\urlstyle{sf}%
+    \hfil \url{http://www.niederberger-musik.de/} \textcopyright~2017\hfil
+  }%
+  \let\@evenhead\@empty
+  \let\@evenfoot\@oddfoot
+}
+\makeatother
+\pagestyle{music}
+
+\usepackage{guitarchordschemes}
+\setchordscheme{tuning={,,,,,},rotate=90}
+
+\begin{document}
+
+\chordscheme \hfill \chordscheme \hfill \chordscheme \hfill \chordscheme
+
+\vspace{\fill}
+
+\chordscheme \hfill \chordscheme \hfill \chordscheme \hfill \chordscheme
+
+\vspace{\fill}
+
+\chordscheme \hfill \chordscheme \hfill \chordscheme \hfill \chordscheme
+
+\vspace{\fill}
+
+\chordscheme \hfill \chordscheme \hfill \chordscheme \hfill \chordscheme
+
+\end{document}
